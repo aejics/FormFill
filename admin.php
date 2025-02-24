@@ -264,7 +264,7 @@
                 echo "<table class='table'><tr><th scope='col'>PDF</th><th scope='col'>FORMID</th><th scope='col'>ENVIADORID</th><th scope='col'>RESPOSTA</th><th scope='col'>RESPONDIDO<th scope='col'>RESPONDIDOPORID</th><th scope='col'>AÇÕES</th></tr>";
                 while ($row = $result->fetchArray()) {
                     $nome = utf8_encode($db->querySingle("SELECT nome FROM cache_giae WHERE id = '{$row[2]}'"));
-                    echo "<tr><td>$row[0]</td><td>$row[1]</td><td>$row[2] <i>($nome)</i></td><td>$row[3]</td><td>$row[4]</td><td>$row[5]</td><td><a href='/admin.php?action=gestao_respostas&subaction=edit&pdf=$row[0]'>EDITAR</a>  <a href='/admin.php?action=gestao_respostas&subaction=delete&pdf=$row[0]'>APAGAR</a></tr>";
+                    echo "<tr><td><a href='/$row[0]'>$row[0]</a></td><td>$row[1]</td><td>$row[2] <i>($nome)</i></td><td>$row[3]</td><td>$row[4]</td><td>$row[5]</td><td><a href='/admin.php?action=gestao_respostas&subaction=edit&pdf=$row[0]'>EDITAR</a>  <a href='/admin.php?action=gestao_respostas&subaction=delete&pdf=$row[0]'>APAGAR</a></tr>";
                 }
                 $db->close();
             }
