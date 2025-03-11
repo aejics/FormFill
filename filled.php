@@ -27,7 +27,6 @@
     $texto = $formulario->doc->texto; // Texto que está na config
     $textomail = $formulario->emailtext->confirmacao; // Texto do mailque está na config
     $db = new SQLite3('db.sqlite3'); // Conectar à Base de Dados
-    $db->exec("CREATE TABLE respostas (pdf VARCHAR(99) UNIQUE NOT NULL, formid VARCHAR(99) NOT NULL, enviadorid VARCHAR(10) NOT NULL, resposta VARCHAR(999), respondido BOOL, respondidoporid VARCHAR(10), PRIMARY KEY (pdf));"); // Criar tabela para guardar dados
     $user = filter_input(INPUT_COOKIE, 'user', FILTER_UNSAFE_RAW); // Ir buscar ID do utilizador
     $dbresult = $db->query("SELECT * FROM cache_giae WHERE id = '{$user}'"); // Buscar dados à DB
     $dbArray = $dbresult->fetchArray(); // Colocar dados num array
