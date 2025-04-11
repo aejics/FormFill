@@ -1,12 +1,12 @@
 <?php
-    $configformfill = array {
+    $configformfill = array (
         'mail' => array(
-            "servidor": "smtp.gmail.com",
-            "porta": 465,
-            "autenticacao": true,
-            "tipodeseguranca": "PHPMailer::ENCRYPTION_STARTTLS ou PHPMailer::ENCRYPTION_SMTPS",
-            "mail": "",
-            "password": ""
+            "servidor" => "smtp.gmail.com",
+            "porta" => 465,
+            "autenticacao" => true,
+            "tipodeseguranca" => "PHPMailer::ENCRYPTION_STARTTLS ou PHPMailer::ENCRYPTION_SMTPS",
+            "mail" => "",
+            "password" => ""
         ),
         'db' => array(
             'servidor' => 'localhost',
@@ -15,5 +15,5 @@
             'db' => 'formfill',
             'porta' => 3306
         )
-    }
+    );
 ?>
