@@ -10,9 +10,8 @@
   }
 ?>
 <?php
-  $db = new SQLite3('db.sqlite3');
-  $isAdmin = $db->querySingle("SELECT * from admins WHERE id = '{$_COOKIE["user"]}' AND atividade = true");
-  $db->close();
+  require_once(__DIR__ . "/../config.php");
+  $isAdmin = $db->query("SELECT * from admins WHERE id = '{$_COOKIE["user"]}' AND atividade = true")->num_rows;
   echo "<nav class='navbar navbar-expand-lg navbar-light bg-light justify-content-center'>
   <a class='navbar-brand' href='/'>FormFill</a>
   <div class='dropdown'>";
