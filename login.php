@@ -60,14 +60,15 @@
             setcookie("loggedin", "true", time() + 3599, "/");
             setcookie("session", $giae->session, time() + 3599, "/");
             setcookie("user", $_POST["user"], time() + 3599, "/");
-            $db = new SQLite3('db.sqlite3');
-            $valordb = $db->prepare("INSERT INTO cache_giae(id, nome, nomecompleto, email) VALUES (:1, :2, :3, :4);");
-            $valordb->bindValue(':1', mb_convert_encoding($_POST["user"], 'ISO-8859-1', 'auto'), SQLITE3_TEXT);
-            $valordb->bindValue(':2', mb_convert_encoding($config['nomeutilizador'], 'ISO-8859-1', 'auto'), SQLITE3_TEXT);
-            $valordb->bindValue(':3', mb_convert_encoding($perfil['perfil']['nome'], 'ISO-8859-1', 'auto'), SQLITE3_TEXT);
-            $valordb->bindValue(':4', mb_convert_encoding($perfil['perfil']['email'], 'ISO-8859-1', 'auto'), SQLITE3_TEXT);
+            $valordb = $db->prepare("INSERT IGNORE INTO cache_giae(id, nome, nomecompleto, email) VALUES (?, ?, ?, ?);");
+            $user = $_POST["user"];
+            $nomeutilizador = $config['nomeutilizador'];
+            $nomecompleto = $perfil['perfil']['nome'];
+            $email = $perfil['perfil']['email'];
+            $nomecompleto = $perfil['perfil']['nome'];
+            $email = $perfil['perfil']['email'];
+            $valordb->bind_param('ssss', $user, $nomeutilizador, $nomecompleto, $email);
             $valordb->execute();
-            $db->close();
             header('Location: /');
         }
     };
